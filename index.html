@@ -91,6 +91,15 @@
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
         } */
     </style>
+<style>
+:root{--accent:#00ff88;--accent2:#00ccff}
+body{background:radial-gradient(900px circle at 20% 10%,#0b1a12 0,#0a0a0a 40%),#0a0a0a}
+.section-title{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.reveal-hidden{opacity:0;transform:translateY(16px)}
+.reveal-show{opacity:1;transform:translateY(0);transition:opacity .7s ease,transform .7s ease}
+.card-tilt{will-change:transform;transition:transform .2s ease,box-shadow .2s ease}
+.nav-active{color:var(--accent)!important;font-weight:700}
+</style>
 </head>
 <body>
     <!-- Navigation -->
@@ -134,7 +143,7 @@
 			</br>
 			<div class="text-center md:text-left md:w-1/2 mb-10 md:mb-0">
                 <h1 class="text-5xl md:text-7xl font-bold mb-4 text-[#00ff88]">Hi, I'm Asheen Shams!</h1>
-                <h2 class="text-3xl md:text-5xl font-bold mb-6">Senior Software Engineer</h2>
+                <h2 class="text-3xl md:text-5xl font-bold mb-6"><span id="role-typer"></span></h2>
                 <p class="text-lg leading-relaxed mb-8 max-w-xl">
                      Senior Software Engineer | .NET Developer | AI Enthusiast | Team Leader | Python & C# Expert
                 </p>
@@ -155,7 +164,7 @@
         <div class="container mx-auto px-6">
             <h2 class="section-title text-4xl font-bold mb-10 text-center">About Me</h2>
             <p class="text-lg leading-relaxed max-w-3xl mx-auto">
-                Dynamic software engineering graduate with a passion for crafting innovative solutions. Proficient in C#, SQL,Python and .NET technology, with hands-on experience in developing impactful applications. Adept at collaborating with teams to deliver projects on time and drive advancements in the software engineering field.
+                Dynamic Senior Full Stack Developer with over 9 years of experience in Full Stack Development using C#, SQL,Python and modern web frameworks. Expert in leveraging Agile Methodologies and SDLC to deliver high-quality software solutions. Proven track record in delivering scalable web applications with strong skills in Stakeholder Interaction and cross-functional collaboration. Proficient in cloud technologies including Azure and AWS.
             </p>
         </div>
     </section>
@@ -311,22 +320,16 @@
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'})})});
+    document.addEventListener('DOMContentLoaded',function(){
+    const btn=document.getElementById('mobile-menu-btn');const menu=document.getElementById('mobile-menu');btn.addEventListener('click',()=>{menu.classList.toggle('hidden')});document.addEventListener('click',e=>{if(!menu.classList.contains('hidden')){if(!menu.contains(e.target)&&e.target!==btn){menu.classList.add('hidden')}}});menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.add('hidden')));
+    const targets=document.querySelectorAll('.project-card, .skill-card, section .section-title');targets.forEach(el=>el.classList.add('reveal-hidden'));const io=new IntersectionObserver(entries=>{entries.forEach(en=>{if(en.isIntersecting){en.target.classList.add('reveal-show')}})},{threshold:0.2});targets.forEach(el=>io.observe(el));
+    const tiltEls=document.querySelectorAll('.project-card, .skill-card');tiltEls.forEach(el=>{el.classList.add('card-tilt');el.addEventListener('mousemove',e=>{const r=el.getBoundingClientRect();const x=e.clientX-r.left;const y=e.clientY-r.top;const rx=((y/r.height)-0.5)*8;const ry=((x/r.width)-0.5)*-8;el.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg) translateY(-5px)`});el.addEventListener('mouseleave',()=>{el.style.transform=''})});
+    const roles=['Senior Software Engineer','.NET Developer','AI Enthusiast','Team Leader','Python & C# Expert'];const typer=document.getElementById('role-typer');let i=0,c=0,b=false;function type(){const full=roles[i];if(!b){c++;if(c>full.length){b=true;setTimeout(type,1200);return}}else{c--;if(c===0){b=false;i=(i+1)%roles.length}}if(typer){typer.textContent=full.slice(0,c)}setTimeout(type,b?40:90)}if(typer){type()}
+    const secs=Array.from(document.querySelectorAll('section[id]'));const links=Array.from(document.querySelectorAll('nav a[href^="#"]'));function update(){let cur=secs[0].id;const y=window.scrollY+window.innerHeight*0.25;secs.forEach(s=>{if(y>=s.offsetTop){cur=s.id}});links.forEach(a=>{a.classList.toggle('nav-active',a.getAttribute('href').slice(1)===cur)})}update();window.addEventListener('scroll',update);
 
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+    document.querySelectorAll('.project-card').forEach(card=>{const p=card.querySelector('p');if(!p)return;p.classList.add('collapsible');const t=document.createElement('button');t.type='button';t.className='card-toggle mt-3';t.textContent='Read more';t.addEventListener('click',()=>{const ex=p.classList.toggle('expanded');t.textContent=ex?'Show less':'Read more'});card.appendChild(t)});
+    });
     </script>
 </body>
 </html>
