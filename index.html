@@ -15,15 +15,35 @@
     <!-- Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap"
-        rel="stylesheet">
+        <!DOCTYPE html>
+    <html lang="en">
 
-    <!-- Icons -->
-    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Asheen Shams | Senior Software Engineer</title>
+        <meta name="description"
+            content="Portfolio of Asheen Shams, a Senior Software Engineer specializing in .NET, Python, and AI.">
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="style.css">
-</head>
+        <!-- Favicon -->
+        <link rel="icon" type="image/svg+xml"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2300ff88'/%3E%3Cpath d='M20 44 L32 20 L44 44' stroke='%23000' stroke-width='6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+        <!-- Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap"
+            rel="stylesheet">
+
+        <!-- Icons -->
+        <link rel="stylesheet" type='text/css'
+            href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="style.css">
+        <!-- intl-tel-input CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css">
+    </head>
 
 <body>
     <!-- Background Canvas for Particles -->
@@ -56,76 +76,70 @@
     </nav>
 
     <!-- Hero Section -->
-    <!DOCTYPE html>
-    <html lang="en">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Asheen Shams | Senior Software Engineer</title>
-        <meta name="description"
-            content="Portfolio of Asheen Shams, a Senior Software Engineer specializing in .NET, Python, and AI.">
-
-        <!-- Favicon -->
-        <link rel="icon" type="image/svg+xml"
-            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2300ff88'/%3E%3Cpath d='M20 44 L32 20 L44 44' stroke='%23000' stroke-width='6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-
-        <!-- Fonts -->
-        <link
-            href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap"
-            rel="stylesheet">
-
-        <!-- Icons -->
-        <link rel="stylesheet" type='text/css'
-            href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-        <!-- Styles -->
-        <link rel="stylesheet" href="style.css">
-    </head>
-
-    <body>
-        <!-- Background Canvas for Particles -->
-        <canvas id="bg-canvas"></canvas>
-
-        <!-- Navigation -->
-        <nav class="navbar">
-            <div class="container nav-container">
-                <div class="logo">Asheen Shams</div>
-                <div class="nav-links">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#experience">Experience</a>
-                    <a href="#skills">Skills</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#contact">Contact</a>
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <div class="hero-text reveal-hidden">
+                <h1>Hi, I'm <span>Asheen Shams</span></h1>
+                <h2><span id="role-typer"></span>|</h2>
+                <!-- <p>Senior Software Engineer | .NET Developer | AI Enthusiast | Team Leader | Python & C# Expert</p> -->
+                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                    <a href="#" id="download-cv-btn" class="btn-primary">Download CV</a>
+                    <a href="#contact" class="btn-primary">Get in Touch</a>
                 </div>
                 <button id="mobile-menu-btn" class="mobile-menu-btn">
                     ☰
                 </button>
             </div>
-            <div id="mobile-menu" class="mobile-menu hidden">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#experience">Experience</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
+            <div class="hero-image reveal-hidden">
+                <div class="profile-img-container">
+                    <img src="assets/profile.jpg" alt="Asheen Shams">
+                </div>
             </div>
         </nav>
 
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="container hero-content">
-                <div class="hero-text reveal-hidden">
-                    <h1>Hi, I'm <span>Asheen Shams</span></h1>
-                    <h2><span id="role-typer"></span>|</h2>
-                    <p>Senior Software Engineer | .NET Developer | AI Enthusiast | Team Leader | Python & C# Expert</p>
-                    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-                        <a href="assets/your-cv.pdf" id="download-cv-btn" class="btn-primary" target="_blank">Download
-                            CV</a>
-                        <a href="#contact" class="btn-primary">Get in Touch</a>
-                    </div>
+    <!-- About Section -->
+    <section id="about" style="padding: 100px 0;">
+        <div class="container">
+            <h2 class="section-title reveal-hidden">About Me</h2>
+            <div class="reveal-hidden"
+                style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.1rem; color: var(--text-muted);">
+                <p>
+                    Dynamic Senior Full Stack Developer with over 9 years of experience in Full Stack Development using
+                    C#, SQL, Python and modern web frameworks. Expert in leveraging Agile Methodologies and SDLC to
+                    deliver high-quality software solutions. Proven track record in delivering scalable web applications
+                    with strong skills in Stakeholder Interaction and cross-functional collaboration. Proficient in
+                    cloud technologies including Azure and AWS.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" style="padding: 100px 0;">
+        <div class="container">
+            <h2 class="section-title reveal-hidden">Work Experience</h2>
+            <div class="card-grid">
+                <!-- Job 1 -->
+                <div class="experience-card reveal-hidden">
+                    <h3>Senior Software Developer</h3>
+                    <p style="color: var(--primary); margin-bottom: 10px;">Confidential Entity, Abu Dhabi, UAE | Oct
+                        2025 - Present</p>
+                    <ul style="list-style-position: inside; color: var(--text-muted);">
+                        <li>Designed and developed software solutions using Python.</li>
+                        <li>Collaborated with UI/UX designers for responsive interfaces.</li>
+                        <li>Developed database schemas using SQLAlchemy and optimized performance.</li>
+                    </ul>
+                </div>
+                <!-- Job 2 -->
+                <div class="experience-card reveal-hidden">
+                    <h3>Senior Full Stack Developer</h3>
+                    <p style="color: var(--primary); margin-bottom: 10px;">Enterprise Systems Analysis Technology, Abu
+                        Dhabi | Jul 2024 - Sep 2025</p>
+                    <ul style="list-style-position: inside; color: var(--text-muted);">
+                        <li>Designed and developed software solutions using .NET framework and AngularJS.</li>
+                        <li>Collaborated with UI/UX designers for responsive interfaces.</li>
+                        <li>Developed database schemas and packages using Oracle and optimized performance.</li>
+                    </ul>
                 </div>
                 <div class="hero-image reveal-hidden">
                     <div class="profile-img-container">
@@ -324,31 +338,63 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="contact-section reveal-hidden">
-            <div class="container">
-                <h2 class="section-title">Get in Touch</h2>
-                <div class="contact-info">
-                    <p>Interested in collaborating or learning more about my work?</p>
-                    <p>Email: <a href="mailto:asheenshams@gmail.com">asheenshams@gmail.com</a></p>
-                    <p>Mobile - UAE: +971 50 1422 409</p>
-                    <p>Mobile - IND: +91 9496 3299 52</p>
-                </div>
-                <a href="https://www.linkedin.com/in/asheens" class="btn-primary" target="_blank">LinkedIn</a>
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section reveal-hidden">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-info">
+                <p>Interested in collaborating or learning more about my work?</p>
+                <p>Email: <a href="mailto:asheenshams@gmail.com">asheenshams@gmail.com</a></p>
+                <p>Location : Abu Dhabi, UAE</p>
+                <p>Mobile - UAE: +971 50 1422 409</p>
+                <p>Mobile - IND: +91 9496 3299 52</p>
             </div>
         </section>
 
-        <!-- Footer -->
-        <footer>
-            <div class="container">
-                <p>&copy; 2025 Asheen Shams. All rights reserved.</p>
-            </div>
-        </footer>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Asheen Shams. All rights reserved.</p>
+        </div>
+    </footer>
 
-        <!-- Scripts -->
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-        <script src="legacy_excel_utils.js"></script>
-        <script src="script.js"></script>
-    </body>
+    <!-- Contact Form Modal -->
+    <div id="cv-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Enter Details to Download CV</h2>
+            <form id="cv-form">
+                <div class="form-group">
+                    <label for="cv-name">Name *</label>
+                    <input type="text" id="cv-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="cv-email">Email *</label>
+                    <input type="email" id="cv-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="cv-number">Phone Number *</label>
+                    <input type="tel" id="cv-number" name="number" required>
+                    <span id="valid-msg" class="hide">✓ Valid</span>
+                    <span id="error-msg" class="hide"></span>
+                </div>
+                <div class="form-group">
+                    <label for="cv-company">Company Name *</label>
+                    <input type="text" id="cv-company" name="company" required>
+                </div>
+                <div class="form-group">
+                    <label for="cv-message">Message (Optional)</label>
+                    <textarea id="cv-message" name="message"></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Submit & Download</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+    <script src="legacy_excel_utils.js"></script>
+    <script src="script.js"></script>
+</body>
 
     </html>

@@ -166,62 +166,124 @@ document.addEventListener('DOMContentLoaded', () => {
             card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
         });
     });
-    // --- Silent CV Download Tracking ---
+
+    // --- Contact Form Modal ---
+    const modal = document.getElementById('cv-modal');
     const btnDownload = document.getElementById('download-cv-btn');
+    const spanClose = document.getElementsByClassName('close-modal')[0];
+    const form = document.getElementById('cv-form');
+    const input = document.querySelector("#cv-number");
+    const errorMsg = document.querySelector("#error-msg");
+    const validMsg = document.querySelector("#valid-msg");
     let userIP = 'Unknown';
-    let userLocation = 'Unknown';
 
-    // Initialize EmailJS
-    emailjs.init("DwakjsfKQjz_Fzfeu");
-
-    // Fetch IP and Location
-    fetch('https://ipwho.is/')
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                userIP = data.ip || 'Unknown';
-                userLocation = `${data.city || ''}, ${data.region || ''}, ${data.country || ''}`.replace(/(^,\s*|,\s*$)/g, '').replace(/,\s*,/g, ',');
-            } else {
-                console.warn('IP Location failed:', data.message);
-                // Fallback to ipify
-                throw new Error(data.message);
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching IP and location:', error);
-            // Fallback to ipify for just IP
-            fetch('https://api.ipify.org?format=json')
-                .then(response => response.json())
-                .then(data => {
-                    userIP = data.ip;
-                })
-                .catch(err => console.error('Error fetching IP:', err));
+    // Initialize intl-tel-input
+    let iti;
+    if (input) {
+        iti = window.intlTelInput(input, {
+            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
+            preferredCountries: ['ae', 'in', 'us', 'gb'],
+            separateDialCode: true,
         });
 
-    if (btnDownload) {
-        btnDownload.addEventListener('click', function (e) {
-            // We do NOT prevent default here, so the download starts immediately.
-            // We just fire off the email in the background.
+        // Validation logic
+        const reset = () => {
+            input.classList.remove("error");
+            errorMsg.innerHTML = "";
+            errorMsg.classList.add("hide");
+            validMsg.classList.add("hide");
+        };
 
-            const templateParams = {
-                name: "Anonymous Downloader",
-                email: "anonymous@example.com", // Changed to valid email format
-                number: "+0000000000",
-                message: "CV Downloaded directly.",
+        // on blur: validate
+        input.addEventListener('blur', () => {
+            reset();
+            if (input.value.trim()) {
+                if (iti.isValidNumber()) {
+                    validMsg.classList.remove("hide");
+                } else {
+                    input.classList.add("error");
+                    const errorCode = iti.getValidationError();
+                    errorMsg.innerHTML = "Invalid number"; // Simplified error message
+                    errorMsg.classList.remove("hide");
+                }
+            }
+        });
+
+        // on keyup / change flag: reset
+        input.addEventListener('change', reset);
+        input.addEventListener('keyup', reset);
+    }
+
+    // Fetch IP
+    fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+            userIP = data.ip;
+        })
+        .catch(error => console.error('Error fetching IP:', error));
+
+    if (btnDownload) {
+        btnDownload.onclick = function (e) {
+            e.preventDefault();
+            modal.style.display = "flex";
+        }
+    }
+
+    if (spanClose) {
+        spanClose.onclick = function () {
+            modal.style.display = "none";
+        }
+    }
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    if (form) {
+        form.onsubmit = function (e) {
+            e.preventDefault();
+
+            // Validate Phone Number
+            if (iti && !iti.isValidNumber()) {
+                alert("Please enter a valid phone number.");
+                input.focus();
+                return;
+            }
+
+            const formData = new FormData(form);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                number: iti ? iti.getNumber() : formData.get('number'), // Get full international number
+                company: formData.get('company'),
+                message: formData.get('message'),
                 ip_address: userIP,
-                location: userLocation,
                 timestamp: new Date().toISOString()
             };
 
-            // Added alerts for debugging
-            // alert("Attempting to send tracking email...");
+            // Simulate "Saving to Website" (Console Log)
+            console.log("Form Data Submitted:", data);
+            alert("Thank you! Your details have been submitted.");
 
-            emailjs.send('service_g29ulfq', 'template_ez3sapr', templateParams)
-                .then(function (response) {
-                    console.log('Tracking email sent!', response.status, response.text);
-                }, function (error) {
-                    console.log('Tracking email failed...', error);
-                });
-        });
+            // Trigger CV Download
+            const cvLink = document.createElement('a');
+            cvLink.href = 'assets/your-cv.pdf';
+            cvLink.download = 'Asheen_Shams_CV.pdf';
+            cvLink.target = '_blank';
+            document.body.appendChild(cvLink);
+            cvLink.click();
+            document.body.removeChild(cvLink);
+
+            // Close modal and reset form
+            modal.style.display = "none";
+            form.reset();
+            if (iti) {
+                // Reset intl-tel-input state
+                validMsg.classList.add("hide");
+                errorMsg.classList.add("hide");
+            }
+        }
     }
 });
