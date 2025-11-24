@@ -1,7 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize EmailJS
-    emailjs.init("DwakjsfKQjz_Fzfeu");
-
     // --- Particle Background ---
     const canvas = document.getElementById('bg-canvas');
     const ctx = canvas.getContext('2d');
@@ -22,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.vx = (Math.random() - 0.5) * 0.5;
             this.vy = (Math.random() - 0.5) * 0.5;
             this.size = Math.random() * 2 + 1;
-            this.color = Math.random() > 0.5 ? '#00ff88' : '#00ccff';
+            this.color = Math.random() > 0.5 ? '#00ff88' : '#00ccff'; // Theme colors
         }
 
         update() {
@@ -43,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function initParticles() {
         particles = [];
-        const particleCount = Math.min(window.innerWidth / 10, 100);
+        const particleCount = Math.min(window.innerWidth / 10, 100); // Responsive count
         for (let i = 0; i < particleCount; i++) {
             particles.push(new Particle());
         }
@@ -56,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             p.update();
             p.draw();
 
+            // Connect particles
             for (let j = index + 1; j < particles.length; j++) {
                 const p2 = particles[j];
                 const dx = p.x - p2.x;
@@ -85,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('reveal-show');
-                revealObserver.unobserve(entry.target);
+                revealObserver.unobserve(entry.target); // Only animate once
             }
         });
     }, { threshold: 0.15 });
@@ -117,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!isDeleting && charIndex === currentRole.length) {
             isDeleting = true;
-            typeSpeed = 2000;
+            typeSpeed = 2000; // Pause at end
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
             roleIndex = (roleIndex + 1) % roles.length;
@@ -138,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
             menu.classList.toggle('hidden');
         });
 
+        // Close menu when clicking a link
         menu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 menu.classList.add('hidden');
@@ -157,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
 
-            const rotateX = ((y - centerY) / centerY) * -10;
+            const rotateX = ((y - centerY) / centerY) * -10; // Max 10deg rotation
             const rotateY = ((x - centerX) / centerX) * 10;
 
             card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
@@ -167,49 +166,13 @@ document.addEventListener('DOMContentLoaded', () => {
             card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
         });
     });
-
-    // --- Contact Form Modal ---
-    const modal = document.getElementById('cv-modal');
+    // --- Silent CV Download Tracking ---
     const btnDownload = document.getElementById('download-cv-btn');
-    const spanClose = document.getElementsByClassName('close-modal')[0];
-    const form = document.getElementById('cv-form');
-    const input = document.querySelector("#cv-number");
-    const errorMsg = document.querySelector("#error-msg");
-    const validMsg = document.querySelector("#valid-msg");
     let userIP = 'Unknown';
     let userLocation = 'Unknown';
 
-    // Initialize intl-tel-input
-    let iti;
-    if (input) {
-        iti = window.intlTelInput(input, {
-            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-            preferredCountries: ['ae', 'in', 'us', 'gb'],
-            separateDialCode: true,
-        });
-
-        const reset = () => {
-            input.classList.remove("error");
-            errorMsg.innerHTML = "";
-            errorMsg.classList.add("hide");
-            validMsg.classList.add("hide");
-        };
-
-        input.addEventListener('blur', () => {
-            reset();
-            if (input.value.trim()) {
-                if (iti.isValidNumber()) {
-                    validMsg.classList.remove("hide");
-                } else {
-                    input.classList.add("error");
-                    errorMsg.innerHTML = "Invalid number";
-                    errorMsg.classList.remove("hide");
-                }
-            }
-        });
-        input.addEventListener('change', reset);
-        input.addEventListener('keyup', reset);
-    }
+    // Initialize EmailJS
+    emailjs.init("DwakjsfKQjz_Fzfeu");
 
     // Fetch IP and Location
     fetch('https://ipwho.is/')
@@ -236,81 +199,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
     if (btnDownload) {
-        btnDownload.onclick = function (e) {
-            e.preventDefault();
-            modal.style.display = "flex";
-        }
-    }
+        btnDownload.addEventListener('click', function (e) {
+            // We do NOT prevent default here, so the download starts immediately.
+            // We just fire off the email in the background.
 
-    if (spanClose) {
-        spanClose.onclick = function () {
-            modal.style.display = "none";
-        }
-    }
-
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-
-    if (form) {
-        const cancelBtn = document.getElementById('cancel-btn');
-        if (cancelBtn) {
-            cancelBtn.addEventListener('click', () => {
-                modal.style.display = "none";
-                form.reset();
-                if (iti) {
-                    validMsg.classList.add("hide");
-                    errorMsg.classList.add("hide");
-                    input.classList.remove("error");
-                }
-            });
-        }
-
-        form.onsubmit = function (e) {
-            e.preventDefault();
-
-            if (iti && !iti.isValidNumber()) {
-                alert("Please enter a valid phone number.");
-                input.focus();
-                return;
-            }
-
-            const formData = new FormData(form);
             const templateParams = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                number: iti ? iti.getNumber() : formData.get('number'),
-                message: formData.get('message'),
+                name: "Anonymous Downloader",
+                email: "anonymous@example.com", // Changed to valid email format
+                number: "+0000000000",
+                message: "CV Downloaded directly.",
                 ip_address: userIP,
                 location: userLocation,
                 timestamp: new Date().toISOString()
             };
 
+            // Added alerts for debugging
+            // alert("Attempting to send tracking email...");
+
             emailjs.send('service_g29ulfq', 'template_ez3sapr', templateParams)
                 .then(function (response) {
-                    console.log('SUCCESS!', response.status, response.text);
-                    alert("Thank you! Your details have been sent.");
-
-                    const cvLink = document.createElement('a');
-                    cvLink.href = 'assets/your-cv.pdf';
-                    cvLink.download = 'Asheen_Shams_CV.pdf';
-                    cvLink.target = '_blank';
-                    document.body.appendChild(cvLink);
-                    cvLink.click();
-                    document.body.removeChild(cvLink);
-
-                    modal.style.display = "none";
-                    form.reset();
-                    if (iti) {
-                        validMsg.classList.add("hide");
-                        errorMsg.classList.add("hide");
-                    }
+                    console.log('Tracking email sent!', response.status, response.text);
                 }, function (error) {
-                    console.log('FAILED...', error);
-                    alert("Failed to send message: " + JSON.stringify(error));
+                    console.log('Tracking email failed...', error);
                 });
-        }
+        });
     }
 });
