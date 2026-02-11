@@ -1,332 +1,902 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asheen Shams | Senior Software Engineer</title>
-    <meta name="description"
-        content="Portfolio of Asheen Shams, a Senior Software Engineer specializing in .NET, Python, and AI.">
+    <title>💕 Will You Be My Valentine? 💕</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-pink: #ff6b9d;
+            --deep-rose: #e91e63;
+            --soft-pink: #fce4ec;
+            --cream: #fff5f7;
+            --gold: #ffd700;
+            --heart-red: #ff1744;
+            --purple-love: #9c27b0;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+        }
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2300ff88'/%3E%3Cpath d='M20 44 L32 20 L44 44' stroke='%23000' stroke-width='6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <!-- Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap"
-        <!DOCTYPE html>
-    <html lang="en">
+        html, body {
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Asheen Shams | Senior Software Engineer</title>
-        <meta name="description"
-            content="Portfolio of Asheen Shams, a Senior Software Engineer specializing in .NET, Python, and AI.">
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            position: relative;
+        }
 
-        <!-- Favicon -->
-        <link rel="icon" type="image/svg+xml"
-            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2300ff88'/%3E%3Cpath d='M20 44 L32 20 L44 44' stroke='%23000' stroke-width='6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-        <!-- Fonts -->
-        <link
-            href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap"
-            rel="stylesheet">
+        /* Particle Background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
 
-        <!-- Icons -->
-        <link rel="stylesheet" type='text/css'
-            href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        .particle {
+            position: absolute;
+            animation: float linear infinite;
+            opacity: 0.8;
+            filter: drop-shadow(0 0 10px currentColor);
+        }
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="style.css">
-        <!-- intl-tel-input CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css">
-    </head>
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+                transform: translateY(90vh) rotate(36deg) scale(1);
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(360deg) scale(0.5);
+                opacity: 0;
+            }
+        }
 
+        /* Glowing Orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            animation: orbFloat 8s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: #ff6b9d;
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: #9c27b0;
+            bottom: -50px;
+            right: -50px;
+            animation-delay: -4s;
+        }
+
+        .orb-3 {
+            width: 200px;
+            height: 200px;
+            background: #ffd700;
+            top: 50%;
+            left: 50%;
+            animation-delay: -2s;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* Main Container */
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Glass Card */
+        .valentine-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 50px 45px;
+            max-width: 520px;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 25px 80px rgba(0, 0, 0, 0.2),
+                0 0 40px rgba(255, 107, 157, 0.3),
+                inset 0 0 80px rgba(255, 255, 255, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: cardAppear 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes cardAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) translateY(100px) rotateX(45deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0) rotateX(0deg);
+            }
+        }
+
+        .valentine-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            animation: shine 3s ease-in-out infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            50%, 100% { left: 100%; }
+        }
+
+        /* Decorative Hearts Border */
+        .hearts-border {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .border-heart {
+            font-size: 28px;
+            animation: heartPop 0.6s ease backwards;
+            filter: drop-shadow(0 5px 15px rgba(255, 23, 68, 0.5));
+        }
+
+        .border-heart:nth-child(1) { animation-delay: 0.1s; }
+        .border-heart:nth-child(2) { animation-delay: 0.2s; }
+        .border-heart:nth-child(3) { animation-delay: 0.3s; }
+        .border-heart:nth-child(4) { animation-delay: 0.4s; }
+        .border-heart:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes heartPop {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Title */
+        .title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, #fff, #fce4ec, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 5px;
+            text-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
+            animation: titleFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 25px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* Cute Character */
+        .cute-character {
+            font-size: 90px;
+            margin: 15px 0;
+            animation: characterBounce 2s ease-in-out infinite;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+        }
+
+        @keyframes characterBounce {
+            0%, 100% { transform: translateY(0) rotate(-3deg); }
+            25% { transform: translateY(-20px) rotate(3deg); }
+            50% { transform: translateY(0) rotate(-3deg); }
+            75% { transform: translateY(-10px) rotate(3deg); }
+        }
+
+        /* Question */
+        .question {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #fff;
+            margin: 20px 0;
+            line-height: 1.3;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        /* Buttons Container */
+        .buttons-container {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            margin-top: 35px;
+            flex-wrap: wrap;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 18px 50px;
+            font-size: 1.2rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.4),
+                transparent
+            );
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            color: white;
+            box-shadow: 
+                0 10px 40px rgba(255, 65, 108, 0.5),
+                0 0 0 0 rgba(255, 65, 108, 0.7);
+            animation: yesGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes yesGlow {
+            0%, 100% { box-shadow: 0 10px 40px rgba(255, 65, 108, 0.5), 0 0 0 0 rgba(255, 65, 108, 0.7); }
+            50% { box-shadow: 0 10px 40px rgba(255, 65, 108, 0.5), 0 0 0 15px rgba(255, 65, 108, 0); }
+        }
+
+        .btn-yes:hover {
+            transform: translateY(-5px) scale(1.08);
+            box-shadow: 0 20px 50px rgba(255, 65, 108, 0.6);
+        }
+
+        .btn-yes .btn-icon {
+            margin-right: 10px;
+        }
+
+        .btn-no {
+            background: linear-gradient(135deg, #636e72, #2d3436);
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-no:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-no .btn-icon {
+            margin-right: 10px;
+        }
+
+        /* Dialog Box */
+        .dialog-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+
+        .dialog-overlay.show {
+            display: flex;
+            animation: overlayFade 0.3s ease;
+        }
+
+        @keyframes overlayFade {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .dialog-box {
+            background: linear-gradient(135deg, #fff 0%, #fce4ec 100%);
+            border-radius: 30px;
+            padding: 45px;
+            max-width: 420px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 
+                0 25px 80px rgba(0, 0, 0, 0.4),
+                0 0 100px rgba(255, 107, 157, 0.3);
+            animation: dialogBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes dialogBounce {
+            0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        .dialog-box::before {
+            content: '💔';
+            position: absolute;
+            font-size: 150px;
+            opacity: 0.1;
+            top: -30px;
+            right: -30px;
+            transform: rotate(15deg);
+        }
+
+        .dialog-emoji {
+            font-size: 80px;
+            margin-bottom: 15px;
+            animation: sadShake 1s ease-in-out infinite;
+        }
+
+        @keyframes sadShake {
+            0%, 100% { transform: rotate(0) translateY(0); }
+            25% { transform: rotate(-5deg) translateY(-5px); }
+            75% { transform: rotate(5deg) translateY(-5px); }
+        }
+
+        .dialog-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: var(--deep-rose);
+            margin-bottom: 15px;
+        }
+
+        .dialog-message {
+            color: #666;
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .btn-rethink {
+            background: linear-gradient(135deg, #ffd700, #ffaa00);
+            color: #333;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-rethink:hover {
+            transform: scale(1.08) translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Success Screen */
+        .success-screen {
+            display: none;
+        }
+
+        .success-screen.show {
+            display: block;
+            animation: successReveal 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes successReveal {
+            0% { opacity: 0; transform: scale(0.5) rotateY(90deg); }
+            100% { opacity: 1; transform: scale(1) rotateY(0deg); }
+        }
+
+        .success-emoji {
+            font-size: 100px;
+            animation: celebrateDance 1s ease-in-out infinite;
+        }
+
+        @keyframes celebrateDance {
+            0%, 100% { transform: scale(1) rotate(-5deg); }
+            25% { transform: scale(1.1) rotate(5deg); }
+            50% { transform: scale(1) rotate(-5deg); }
+            75% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        .success-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            background: linear-gradient(135deg, #fff, #fce4ec, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 15px 0;
+        }
+
+        .success-message {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+            margin: 15px 0;
+        }
+
+        .custom-message {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px 30px;
+            margin: 25px 0;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+        }
+
+        .custom-message::before {
+            content: '"';
+            font-family: 'Great Vibes', cursive;
+            font-size: 60px;
+            color: rgba(255, 255, 255, 0.3);
+            position: absolute;
+            top: -10px;
+            left: 15px;
+        }
+
+        .custom-message p {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.6rem;
+            color: #fff;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .celebration-icons {
+            font-size: 50px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .celebration-icons span {
+            animation: iconFloat 2s ease-in-out infinite;
+        }
+
+        .celebration-icons span:nth-child(1) { animation-delay: 0s; }
+        .celebration-icons span:nth-child(2) { animation-delay: 0.2s; }
+        .celebration-icons span:nth-child(3) { animation-delay: 0.4s; }
+        .celebration-icons span:nth-child(4) { animation-delay: 0.6s; }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Confetti */
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50;
+            display: none;
+        }
+
+        .confetti-container.show {
+            display: block;
+        }
+
+        .confetti {
+            position: absolute;
+            top: -20px;
+            animation: confettiDrop linear forwards;
+        }
+
+        @keyframes confettiDrop {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        /* Fireworks */
+        .fireworks {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 45;
+            display: none;
+        }
+
+        .fireworks.show {
+            display: block;
+        }
+
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            animation: fireworkBurst 1s ease-out forwards;
+        }
+
+        @keyframes fireworkBurst {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(20); opacity: 0; }
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 30px;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .footer-heart {
+            color: #ff1744;
+            animation: footerBeat 1s ease-in-out infinite;
+            font-size: 1.2rem;
+        }
+
+        @keyframes footerBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+
+        /* Responsive */
+        @media (max-width: 550px) {
+            .valentine-card {
+                padding: 40px 25px;
+                margin: 10px;
+            }
+
+            .title {
+                font-size: 2.5rem;
+            }
+
+            .question {
+                font-size: 1.9rem;
+            }
+
+            .btn {
+                padding: 15px 35px;
+                font-size: 1rem;
+            }
+
+            .success-title {
+                font-size: 2.8rem;
+            }
+
+            .cute-character {
+                font-size: 70px;
+            }
+
+            .dialog-box {
+                padding: 35px 25px;
+            }
+        }
+
+        /* Hidden class */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Music toggle */
+        .music-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            z-index: 200;
+            transition: all 0.3s ease;
+        }
+
+        .music-toggle:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
 <body>
-    <!-- Background Canvas for Particles -->
-    <canvas id="bg-canvas"></canvas>
+    <!-- Background Effects -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="particles" id="particles"></div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <div class="logo">Asheen Shams</div>
-            <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#experience">Experience</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <button id="mobile-menu-btn" class="mobile-menu-btn">
-                ☰
-            </button>
-        </div>
-        <div id="mobile-menu" class="mobile-menu hidden">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#experience">Experience</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
+    <!-- Confetti -->
+    <div class="confetti-container" id="confettiContainer"></div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container hero-content">
-            <div class="hero-text reveal-hidden">
-                <h1>Hi, I'm <span>Asheen Shams</span></h1>
-                <h2><span id="role-typer"></span>|</h2>
-                <!-- <p>Senior Software Engineer | .NET Developer | AI Enthusiast | Team Leader | Python & C# Expert</p> -->
-                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-                    <a href="#" id="download-cv-btn" class="btn-primary">Download CV</a>
-                    <a href="#contact" class="btn-primary">Get in Touch</a>
-                </div>
+    <!-- Fireworks -->
+    <div class="fireworks" id="fireworks"></div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Valentine Card - Main Question -->
+        <div class="valentine-card" id="mainCard">
+            <div class="hearts-border">
+                <span class="border-heart">💖</span>
+                <span class="border-heart">💕</span>
+                <span class="border-heart">💗</span>
+                <span class="border-heart">💕</span>
+                <span class="border-heart">💖</span>
             </div>
-            <div class="hero-image reveal-hidden">
-                <div class="profile-img-container">
-                    <img src="assets/profile.jpg" alt="Asheen Shams">
+            
+            <div class="card-content">
+                <h1 class="title" id="titleText">Hey Assi molee!</h1>
+                <p class="subtitle">I have something very special to ask you...</p>
+                
+                <div class="cute-character">🥺👉👈</div>
+                
+                <h2 class="question">Will You Be My Valentine?</h2>
+                
+                <div class="buttons-container" id="buttonsContainer">
+                    <button class="btn btn-yes" id="yesBtn" onclick="sayYes()">
+                        <span class="btn-icon">💕</span>Yes!
+                    </button>
+                    <button class="btn btn-no" id="noBtn" onclick="sayNo()">
+                        <span class="btn-icon">💔</span>No
+                    </button>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- About Section -->
-    <section id="about" style="padding: 100px 0;">
-        <div class="container">
-            <h2 class="section-title reveal-hidden">About Me</h2>
-            <div class="reveal-hidden"
-                style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.1rem; color: var(--text-muted);">
-                <p>
-                    Dynamic Senior Full Stack Developer with over 9 years of experience in Full Stack Development using
-                    C#, SQL, Python and modern web frameworks. Expert in leveraging Agile Methodologies and SDLC to
-                    deliver high-quality software solutions. Proven track record in delivering scalable web applications
-                    with strong skills in Stakeholder Interaction and cross-functional collaboration. Proficient in
-                    cloud technologies including Azure and AWS.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" style="padding: 100px 0;">
-        <div class="container">
-            <h2 class="section-title reveal-hidden">Work Experience</h2>
-            <div class="card-grid">
-                <!-- Job 1 -->
-                <div class="experience-card reveal-hidden">
-                    <h3>Senior Software Developer</h3>
-                    <p style="color: var(--primary); margin-bottom: 10px;">Confidential Entity, Abu Dhabi, UAE | Oct
-                        2025 - Present</p>
-                    <ul style="list-style-position: inside; color: var(--text-muted);">
-                        <li>Designed and developed software solutions using Python.</li>
-                        <li>Collaborated with UI/UX designers for responsive interfaces.</li>
-                        <li>Developed database schemas using SQLAlchemy and optimized performance.</li>
-                    </ul>
+        <!-- Success Screen -->
+        <div class="valentine-card success-screen" id="successScreen">
+            <div class="card-content">
+                <div class="success-emoji">🥳💕</div>
+                <h1 class="success-title">Yaaay!</h1>
+                <p class="success-message">You just made me the happiest person in the entire universe!</p>
+                
+                <div class="custom-message">
+                    <p id="customMessage">I promise to love you, cherish you, and make every single day feel like Valentine's Day! You are my everything! Happy Valentine's Day! 💕</p>
                 </div>
-                <!-- Job 2 -->
-                <div class="experience-card reveal-hidden">
-                    <h3>Senior Full Stack Developer</h3>
-                    <p style="color: var(--primary); margin-bottom: 10px;">Enterprise Systems Analysis Technology, Abu
-                        Dhabi | Jul 2024 - Sep 2025</p>
-                    <ul style="list-style-position: inside; color: var(--text-muted);">
-                        <li>Designed and developed software solutions using .NET framework and AngularJS.</li>
-                        <li>Collaborated with UI/UX designers for responsive interfaces.</li>
-                        <li>Developed database schemas and packages using Oracle and optimized performance.</li>
-                    </ul>
-                </div>
-                <!-- Job 3 -->
-                <div class="experience-card reveal-hidden">
-                    <h3>Tech Lead</h3>
-                    <p style="color: var(--primary); margin-bottom: 10px;">Smart Software Systems and Solutions, Abu
-                        Dhabi | May 2022 - Jun 2024</p>
-                    <ul style="list-style-position: inside; color: var(--text-muted);">
-                        <li>Designed and developed software solutions using .NET framework.</li>
-                        <li>Collaborated with UI/UX designers for responsive interfaces.</li>
-                        <li>Developed database schemas using Entity Framework and optimized performance.</li>
-                        <li>Led code reviews and ensured adherence to best practices.</li>
-                    </ul>
-                </div>
-                <!-- Job 4 -->
-                <div class="experience-card reveal-hidden">
-                    <h3>Senior Software Engineer</h3>
-                    <p style="color: var(--primary); margin-bottom: 10px;">Simplogics Solutions Pvt Ltd, Kerala, India |
-                        Jan 2021 - Apr 2022</p>
-                    <ul style="list-style-position: inside; color: var(--text-muted);">
-                        <li>Developed web applications using .Net Core.</li>
-                        <li>Designed scalable application architectures.</li>
-                        <li>Migrated Microsoft SQL Server to PostgreSQL and Published SSRS Reports.</li>
-                        <li>Provided technical support and improved system performance.</li>
-                    </ul>
-                </div>
-                <!-- Job 5 -->
-                <div class="experience-card reveal-hidden">
-                    <h3>Software Engineer</h3>
-                    <p style="color: var(--primary); margin-bottom: 10px;">ARS TT&T, Kerala, India | Oct 2019 - Dec 2020
-                    </p>
-                    <ul style="list-style-position: inside; color: var(--text-muted);">
-                        <li>Developed a Module for SOSPES-Parking Permits Systems.</li>
-                        <li>Developed Document management System.</li>
-                        <li>Implemented Vehicle number plate recognition microservice.</li>
-                    </ul>
-                </div>
-                <!-- Job 6 -->
-                <div class="experience-card reveal-hidden">
-                    <h3>Software Engineer</h3>
-                    <p style="color: var(--primary); margin-bottom: 10px;">Ironss Technologies, Kerala, India | Oct 2019
-                        - Dec 2020</p>
-                    <ul style="list-style-position: inside; color: var(--text-muted);">
-                        <li>Contributed to seamless .NET projects consistently meeting deadlines.</li>
-                        <li>Collaborated in teams to enhance project outcomes.</li>
-                        <li>Assisted in debugging and optimizing code for better performance.</li>
-                    </ul>
+                
+                <div class="celebration-icons">
+                    <span>💑</span>
+                    <span>✨</span>
+                    <span>🌹</span>
+                    <span>💝</span>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Skills Section -->
-    <section id="skills" style="padding: 100px 0;">
-        <div class="container">
-            <h2 class="section-title reveal-hidden">Skills</h2>
-            <div class="skills-grid reveal-hidden">
-                <!-- Tech Stack -->
-                <div class="skill-card" title="C#"><i class="devicon-csharp-plain"></i></div>
-                <div class="skill-card" title="Python"><i class="devicon-python-plain"></i></div>
-                <div class="skill-card" title=".NET"><i class="devicon-dotnetcore-plain"></i></div>
-                <div class="skill-card" title="SQL Server"><i class="devicon-microsoftsqlserver-plain"></i></div>
-                <div class="skill-card" title="Angular"><i class="devicon-angularjs-plain"></i></div>
-                <div class="skill-card" title="React"><i class="devicon-react-original"></i></div>
-                <div class="skill-card" title="Azure"><i class="devicon-azure-plain"></i></div>
-                <div class="skill-card" title="Git"><i class="devicon-git-plain"></i></div>
-                <div class="skill-card" title="Jira"><i class="devicon-jira-plain"></i></div>
+        <p class="footer">Made with <span class="footer-heart">❤️</span> just for you</p>
+    </div>
 
-                <!-- Additional Tech/Tools -->
-                <div class="skill-card" title="HTML5"><i class="devicon-html5-plain"></i></div>
-                <div class="skill-card" title="CSS3"><i class="devicon-css3-plain"></i></div>
-                <div class="skill-card" title="JavaScript"><i class="devicon-javascript-plain"></i></div>
-                <div class="skill-card" title="PostgreSQL"><i class="devicon-postgresql-plain"></i></div>
-                <div class="skill-card" title="Oracle"><i class="devicon-oracle-original"></i></div>
-                <div class="skill-card" title="Generative AI"><i class="fas fa-brain"></i></div>
-
-                <!-- Soft Skills / Concepts -->
-                <div class="skill-card" title="Leadership"><i class="fas fa-users-cog"></i></div>
-                <div class="skill-card" title="Problem Solving"><i class="fas fa-puzzle-piece"></i></div>
-                <div class="skill-card" title="Project Management"><i class="fas fa-tasks"></i></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" style="padding: 100px 0;">
-        <div class="container">
-            <h2 class="section-title reveal-hidden">Highlighted Projects</h2>
-            <div class="card-grid">
-                <div class="project-card reveal-hidden">
-                    <h3>MT5-Python</h3>
-                    <p>Developed Python Application for backend. This is a production-ready trading infrastructure
-                        designed for professional forex/crypto trading operations with comprehensive risk management and
-                        automated protection systems.</p>
-                </div>
-                <div class="project-card reveal-hidden">
-                    <h3>MT5-Dataengin</h3>
-                    <p>Developed Python app for FastAPI-based microservice that automatically fetches trading account
-                        data from integestor API, processes it by management strategies, and serves it through REST
-                        endpoints with scheduled daily refreshes and local JSON persistence.</p>
-                </div>
-                <div class="project-card reveal-hidden">
-                    <h3>MT5-Overview</h3>
-                    <p>Developed a FastAPI-backed Python service that periodically collects portfolio data from multiple
-                        trading accounts, monitors server health, and exposes equity-curve queries via a REST API with
-                        config-driven targets and Telegram alerts.</p>
-                </div>
-                <div class="project-card reveal-hidden">
-                    <h3>ESAT-ERP Web Portal</h3>
-                    <p>Designed and Implemented full scale ERP Application for Small and Medium Size business, Based
-                        with .Net core, AngularJS and Oracle and Hosted on Oracle Cloud.</p>
-                </div>
-                <div class="project-card reveal-hidden">
-                    <h3>Smart ERP HR & Payroll</h3>
-                    <p>Developed and maintained HR and employee management system with payroll processing, attendance
-                        tracking, and performance evaluation using MVC .NET Core and Microsoft SQL Server.</p>
-                </div>
-                <div class="project-card reveal-hidden">
-                    <h3>IMS-POS</h3>
-                    <p>Migrate Inventventory and point of Sales Systems Legacy Systems into Frontend as Opensystems and Backend PostgreSQL.
-                    Migrating reports Crystal report to SSRS reports.</p>
-                </div>
-                <div class="project-card reveal-hidden">
-                    <h3>SOSPES-Parking Permits</h3>
-                    <p>Developed a microservice for Reading Vehicle number plates for residential parking permits and
-                        Implemented Document management Systems for SOSPES.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section reveal-hidden">
-        <div class="container">
-            <h2 class="section-title">Get in Touch</h2>
-            <div class="contact-info">
-                <p>Interested in collaborating or learning more about my work?</p>
-                <p>Email: <a href="mailto:asheenshams@gmail.com">asheenshams@gmail.com</a></p>
-                <p>Location : Abu Dhabi, UAE</p>
-                <p>Mobile - UAE: +971 50 1422 409</p>
-                <p>Mobile - IND: +91 9496 3299 52</p>
-            </div>
-            <a href="https://www.linkedin.com/in/asheens" class="btn-primary" target="_blank">LinkedIn</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Asheen Shams. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Contact Form Modal -->
-    <div id="cv-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>Enter Details to Download CV</h2>
-            <form id="cv-form">
-                <div class="form-group">
-                    <label for="cv-name">Name *</label>
-                    <input type="text" id="cv-name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="cv-email">Email *</label>
-                    <input type="email" id="cv-email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="cv-number">Phone Number *</label>
-                    <input type="tel" id="cv-number" name="number" required>
-                    <span id="valid-msg" class="hide">✓ Valid</span>
-                    <span id="error-msg" class="hide"></span>
-                </div>
-                <div class="form-group">
-                    <label for="cv-company">Company Name *</label>
-                    <input type="text" id="cv-company" name="company" required>
-                </div>
-                <div class="form-group">
-                    <label for="cv-message">Message (Optional)</label>
-                    <textarea id="cv-message" name="message"></textarea>
-                </div>
-                <button type="submit" class="btn-primary">Submit & Download</button>
-            </form>
+    <!-- Dialog Box -->
+    <div class="dialog-overlay" id="dialogOverlay">
+        <div class="dialog-box">
+            <div class="dialog-emoji">🥺💔</div>
+            <h3 class="dialog-title">Please Don't Do This To Me!</h3>
+            <p class="dialog-message">My heart is literally breaking right now... 😢<br><br>Are you really sure? Maybe take a moment and think about all our beautiful memories together? 🥹💕</p>
+            <button class="btn-rethink" onclick="closeDialog()">🤔 Let Me Rethink</button>
         </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
-    <script src="legacy_excel_utils.js"></script>
-    <script src="script.js"></script>
-</body>
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            const emojis = ['💕', '❤️', '💖', '💗', '💓', '💘', '💝', '🌹', '✨', '💫', '⭐'];
+            
+            for (let i = 0; i < 40; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = (Math.random() * 15 + 10) + 's';
+                particle.style.animationDelay = (Math.random() * 15) + 's';
+                particle.style.fontSize = (Math.random() * 25 + 15) + 'px';
+                particles.appendChild(particle);
+            }
+        }
 
+        // Say Yes function
+        function sayYes() {
+            document.getElementById('mainCard').classList.add('hidden');
+            document.getElementById('successScreen').classList.add('show');
+            
+            // Trigger celebrations
+            createConfetti();
+            createFireworks();
+            
+            // Multiple celebration waves
+            setTimeout(createConfetti, 1000);
+            setTimeout(createFireworks, 500);
+            setTimeout(createConfetti, 2000);
+        }
+
+        // Say No function
+        function sayNo() {
+            const noBtn = document.getElementById('noBtn');
+            noBtn.classList.add('hidden');
+            document.getElementById('dialogOverlay').classList.add('show');
+        }
+
+        // Close dialog
+        function closeDialog() {
+            document.getElementById('dialogOverlay').classList.remove('show');
+        }
+
+        // Create confetti
+        function createConfetti() {
+            const container = document.getElementById('confettiContainer');
+            container.classList.add('show');
+            const emojis = ['💕', '❤️', '💖', '✨', '🌟', '💗', '🎉', '🎊', '💝', '🌹'];
+            
+            for (let i = 0; i < 80; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                confetti.style.animationDelay = (Math.random() * 2) + 's';
+                confetti.style.fontSize = (Math.random() * 25 + 15) + 'px';
+                container.appendChild(confetti);
+                
+                // Remove confetti after animation
+                setTimeout(() => confetti.remove(), 5000);
+            }
+        }
+
+        // Create fireworks
+        function createFireworks() {
+            const container = document.getElementById('fireworks');
+            container.classList.add('show');
+            const colors = ['#ff6b9d', '#ffd700', '#ff1744', '#e91e63', '#9c27b0', '#00bcd4'];
+            
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    const firework = document.createElement('div');
+                    firework.className = 'firework';
+                    firework.style.left = (Math.random() * 80 + 10) + '%';
+                    firework.style.top = (Math.random() * 50 + 10) + '%';
+                    firework.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    firework.style.boxShadow = `0 0 20px ${firework.style.backgroundColor}`;
+                    container.appendChild(firework);
+                    
+                    setTimeout(() => firework.remove(), 1000);
+                }, i * 200);
+            }
+        }
+
+        // URL Parameter handling
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Set custom content from URL
+        function setCustomContent() {
+            const name = getUrlParameter('name');
+            const message = getUrlParameter('message');
+            
+            if (name) {
+                document.getElementById('titleText').textContent = `Hey ${decodeURIComponent(name)}!`;
+            }
+            
+            if (message) {
+                document.getElementById('customMessage').textContent = decodeURIComponent(message);
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            setCustomContent();
+        });
+    </script>
+</body>
 </html>
