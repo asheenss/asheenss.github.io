@@ -1,8 +1,7 @@
 name: Deploy to GitHub Pages
 
 on:
-  push:
-    branches: [main]
+  # Manual only: the site is served from the committed build in a-little-apology/
   workflow_dispatch:
 
 permissions:
