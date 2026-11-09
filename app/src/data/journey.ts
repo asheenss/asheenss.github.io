@@ -1,0 +1,70 @@
+import type { HeadingParts, JourneyChapter } from '@/types'
+
+export const journeyIntro = {
+  heading: { text: 'Ten years in', emphasis: 'software engineering.' } as HeadingParts,
+  range: '2016 — Present',
+  note: 'Each row is a chapter. Hover to read.',
+}
+
+export const journey: JourneyChapter[] = [
+  {
+    year: '2016',
+    title: 'Started Software Development',
+    headline: 'Started writing software that people rely on.',
+    body: 'Built ASP.NET MVC applications in C# and SQL Server — websites, a job portal, hospital management and an E-CRM — and owned the full SDLC from requirements to production support.',
+    tags: ['ASP.NET MVC', 'C#', 'SQL Server'],
+    role: '.NET Developer',
+    company: 'Ironns Technologies',
+    period: 'Jul 2016 – Oct 2019',
+  },
+  {
+    year: '2018',
+    title: 'Enterprise Application Development',
+    headline: 'Moved into business-critical systems.',
+    body: 'Delivered end-to-end business applications with feature development, database design, debugging, testing and performance tuning, from first requirement through deployment.',
+    tags: ['.NET', 'SQL Server', 'SDLC'],
+    role: '.NET Developer',
+    company: 'Ironns Technologies',
+    period: 'Jul 2016 – Oct 2019',
+  },
+  {
+    year: '2020',
+    title: 'Full Stack Engineering',
+    headline: 'Took ownership of the whole stack.',
+    body: 'Built .NET Core microservices and REST APIs, an E-CRM with ticketing and Power BI dashboards, and a parking-permit solution. Then modernised legacy POS and inventory systems, migrating to PostgreSQL and SSRS and running microservices on Azure Service Fabric.',
+    tags: ['.NET Core', 'Microservices', 'PostgreSQL', 'Power BI'],
+    role: 'Software Engineer → Senior Software Engineer',
+    company: 'ARS T&TT · Simplogics Solutions',
+    period: 'Nov 2019 – Jun 2022',
+  },
+  {
+    year: '2022',
+    title: 'Senior Software Engineering',
+    headline: 'Started owning technical decisions.',
+    body: 'Led the team behind an ERP covering HR, payroll, attendance, loans and asset management. Automation raised process efficiency by 25%, biometric integration improved attendance monitoring by 40%, and Emirates ID integration streamlined employee records.',
+    tags: ['ASP.NET MVC', 'SQL Server', 'Agile', 'Leadership'],
+    role: 'Senior Software Engineer & Tech Lead',
+    company: 'Smart Software Systems and Solutions',
+    period: 'May 2022 – Jun 2024',
+  },
+  {
+    year: '2024',
+    title: 'Enterprise Platforms & Security',
+    headline: 'Large platforms, higher stakes.',
+    body: 'Optimised large-scale ERP modules on C#, AngularJS and Angular for a 20% faster load, shipped every rollout on time, and built .NET Core and Oracle PL/SQL services on Oracle Cloud.',
+    tags: ['.NET Core', 'Angular', 'Oracle PL/SQL', 'Oracle Cloud'],
+    role: 'Senior Full Stack Developer',
+    company: 'Enterprise Systems Analysis Technology (ESAT)',
+    period: 'Jul 2024 – Sep 2025',
+  },
+  {
+    year: '2026',
+    title: 'AI & Advanced Engineering',
+    headline: 'Where software meets intelligence.',
+    body: 'FastAPI services, LLM integrations, RAG pipelines and agentic workflows over large trading datasets, cutting application load time by 60%. Now building secure government platforms with UAE Pass SSO, JWT and RBAC.',
+    tags: ['Python', 'FastAPI', 'RAG', 'Agentic AI', 'UAE Pass'],
+    role: 'Senior Software Developer → Full Stack Developer',
+    company: 'Qdata · MVP Application and Game Design',
+    period: 'Oct 2025 – Present',
+  },
+]
