@@ -16,16 +16,16 @@ export default function Envelope({ open }: Props) {
     >
       <div className="absolute inset-0 rounded-lg bg-gradient-to-b from-rose-soft to-rose shadow-2xl shadow-burgundy/30" />
       <motion.div
-        className="paper absolute left-[7%] right-[7%] top-[8%] h-[85%] rounded-md border border-gold-light px-4 pt-5 text-center shadow"
+        className="paper absolute left-[7%] right-[7%] top-[8%] h-[85%] rounded-md border border-rose-soft px-4 pt-5 text-center shadow"
         animate={{ y: open ? (reduce ? -60 : -95) : 0 }}
         transition={{ duration: dur, delay: reduce ? 0 : 0.7, ease: [0.22, 1, 0.36, 1] }}
       >
         <p className="font-script text-2xl text-burgundy/80 sm:text-3xl">For you, my love</p>
-        <div className="mx-auto mt-3 h-px w-16 bg-gold-light" />
+        <div className="mx-auto mt-3 h-px w-16 bg-rose-soft" />
       </motion.div>
       <svg viewBox="0 0 340 230" className="absolute inset-0 h-full w-full" preserveAspectRatio="none">
-        <path d="M0 230 L0 18 L170 140 L340 18 L340 230 Z" fill="#eca0b0" />
-        <path d="M0 230 L170 110 L340 230 Z" fill="#e48fa3" />
+        <path d="M0 230 L0 18 L170 140 L340 18 L340 230 Z" fill="#FFA9C6" />
+        <path d="M0 230 L170 110 L340 230 Z" fill="#FF8FB8" />
       </svg>
       <motion.div
         className="absolute left-0 right-0 top-0 h-[62%] origin-top"
@@ -34,7 +34,7 @@ export default function Envelope({ open }: Props) {
         transition={{ duration: dur, ease: 'easeInOut' }}
       >
         <svg viewBox="0 0 340 140" className="h-full w-full drop-shadow" preserveAspectRatio="none">
-          <path d="M0 0 H340 L170 140 Z" fill="#f4b6c2" />
+          <path d="M0 0 H340 L170 140 Z" fill="#FFC0CB" />
         </svg>
       </motion.div>
       <motion.div
@@ -42,7 +42,7 @@ export default function Envelope({ open }: Props) {
         animate={{ opacity: open ? 0 : 1, scale: open ? 0.6 : 1 }}
         transition={{ duration: reduce ? 0 : 0.4 }}
       >
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="#e6d2a8">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="#FFE4EC">
           <path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.7 4.5 6.4 4.5c2 0 3.6 1.1 4.6 2.7h2c1-1.6 2.6-2.7 4.6-2.7 3.7 0 5.5 3.9 4 7.3C19.5 16.4 12 21 12 21z" />
         </svg>
       </motion.div>

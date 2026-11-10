@@ -8,7 +8,7 @@ function Card({ text, i }: { text: string; i: number }) {
   return (
     <motion.li
       {...r}
-      className={`relative rounded-2xl border border-gold-light bg-ivory/90 px-7 py-8 text-center shadow-lg shadow-rose/20 ${
+      className={`relative rounded-2xl card-soft px-7 py-8 text-center shadow-lg shadow-rose/20 ${
         i === reminders.length - 1 ? 'sm:col-span-2' : ''
       }`}
     >
@@ -21,7 +21,7 @@ function Card({ text, i }: { text: string; i: number }) {
 export default function Reminder() {
   const head = useReveal();
   return (
-    <section className="bg-gradient-to-b from-ivory to-blush px-4 py-24 sm:py-32">
+    <section className="px-4 py-24 sm:py-32">
       <motion.h2 {...head} className="mx-auto mb-12 max-w-2xl text-center font-display text-3xl text-burgundy sm:text-5xl">
         Some Things I Never Want You to Forget.
       </motion.h2>

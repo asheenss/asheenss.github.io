@@ -1,15 +1,36 @@
 import { useState } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
+import { useCelebrate } from '../components/animations/Celebration';
+import HeartField from '../components/animations/HeartField';
+import Rose from '../components/animations/Rose';
+import HeartShape from '../components/common/HeartShape';
+import Modal from '../components/common/Modal';
 import FloatingHearts from '../components/FloatingHearts';
-import Sparkles from '../components/Sparkles';
 import RomanticButton from '../components/RomanticButton';
-import { finalLines, finalSupport, hugMessage } from '../data/messages';
+import Sparkles from '../components/Sparkles';
+import { finalClosing, finalLines, finalSupport, hugCta, hugMessage } from '../data/messages';
 import { useReveal } from '../hooks/useReveal';
+import { sfx } from '../lib/sfx';
+
+// Typography for each line of the finale, building from a whisper to the big moment.
+const LINE_STYLES = [
+  'font-script text-5xl sm:text-7xl text-rose-soft',
+  'font-script text-7xl sm:text-9xl text-white',
+  'font-script text-7xl sm:text-9xl text-white',
+  'font-script text-[2.6rem] sm:text-7xl text-rose-soft',
+  'font-display italic text-xl sm:text-3xl text-blush max-w-xl',
+];
 
 function Line({ text, i }: { text: string; i: number }) {
-  const r = useReveal(i * 0.15, 30);
+  const reduce = useReducedMotion();
   return (
-    <motion.p {...r} className="font-script text-5xl leading-tight text-ivory sm:text-8xl">
+    <motion.p
+      initial={reduce ? false : { opacity: 0, y: 36, filter: 'blur(8px)' }}
+      whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+      viewport={{ once: true, margin: '-18% 0px' }}
+      transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+      className={`text-glow text-balance leading-tight ${LINE_STYLES[i] ?? LINE_STYLES[LINE_STYLES.length - 1]}`}
+    >
       {text}
     </motion.p>
   );
@@ -17,28 +38,27 @@ function Line({ text, i }: { text: string; i: number }) {
 
 export default function FinalMessage() {
   const reduce = useReducedMotion();
+  const celebrate = useCelebrate();
   const [hug, setHug] = useState(false);
+  const closing = useReveal(0.1, 30);
   const support = useReveal(0.2);
 
   return (
-    <section className="bg-romance-deep relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-4 py-24 text-center">
-      <FloatingHearts count={18} tone="glow" />
-      <Sparkles count={24} />
-      <div className="relative z-10 flex flex-col items-center">
+    <section id="forever" className="bg-romance-deep relative overflow-hidden px-5 pb-40 pt-28 text-center sm:pt-36">
+      <div aria-hidden className="animate-glow absolute left-1/2 top-[18%] h-[70vmin] w-[70vmin] -translate-x-1/2 rounded-full" style={{ background: 'radial-gradient(closest-side, rgba(255,105,180,.45), rgba(255,105,180,0))' }} />
+      {reduce ? <FloatingHearts count={18} tone="glow" /> : <HeartField />}
+      <Sparkles count={26} />
+
+      <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center gap-14 sm:gap-20">
         {finalLines.map((l, i) => (
           <Line key={l} text={l} i={i} />
         ))}
 
-        <motion.div
-          aria-hidden
-          className="my-8"
-          animate={reduce ? undefined : { scale: [1, 1.18, 1, 1.12, 1] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <svg viewBox="0 0 24 24" width="72" height="72" fill="#f4b6c2" style={{ filter: 'drop-shadow(0 0 16px rgba(244,182,194,.6))' }}>
-            <path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.7 4.5 6.4 4.5c2 0 3.6 1.1 4.6 2.7h2c1-1.6 2.6-2.7 4.6-2.7 3.7 0 5.5 3.9 4 7.3C19.5 16.4 12 21 12 21z" />
-          </svg>
-        </motion.div>
+        <HeartShape size={84} className="animate-heartbeat text-rose-soft" style={{ filter: 'drop-shadow(0 0 22px rgba(255,192,203,.75))' }} />
+
+        <motion.p {...closing} className="text-glow font-script text-6xl leading-tight text-white sm:text-8xl">
+          {finalClosing}
+        </motion.p>
 
         <motion.div {...support} className="max-w-xl space-y-4 font-display text-lg leading-relaxed text-blush sm:text-xl">
           {finalSupport.map((t) => (
@@ -46,45 +66,40 @@ export default function FinalMessage() {
           ))}
         </motion.div>
 
-        <div className="mt-10">
-          <RomanticButton variant="light" onClick={() => setHug(true)}>
-            Send You a Million Hugs ❤️
-          </RomanticButton>
+        <RomanticButton
+          variant="light"
+          onClick={() => {
+            setHug(true);
+            celebrate('rain');
+            celebrate('burst');
+            sfx.chime();
+          }}
+        >
+          {hugCta} 🤗
+        </RomanticButton>
+      </div>
+
+      {/* Roses along the bottom edge */}
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between px-2 sm:px-10">
+        <div className="flex items-end gap-1 sm:gap-4">
+          <Rose size={150} delay={0} />
+          <Rose size={110} delay={-1.6} />
+          <Rose size={130} delay={-3} className="hidden sm:block" />
+        </div>
+        <div className="flex items-end gap-1 sm:gap-4">
+          <Rose size={130} delay={-2.2} className="hidden sm:block" />
+          <Rose size={110} delay={-0.8} />
+          <Rose size={150} delay={-3.6} />
         </div>
       </div>
 
-      <AnimatePresence>
-        {hug && (
-          <motion.div
-            role="dialog"
-            aria-modal="true"
-            aria-label="A million hugs"
-            className="fixed inset-0 z-[70] flex items-center justify-center bg-burgundy-dark/90 p-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setHug(false)}
-          >
-            <FloatingHearts count={40} tone="glow" />
-            <motion.div
-              initial={reduce ? false : { scale: 0.9, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.3 }}
-              className="relative max-w-md text-center"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <p className="font-script text-4xl leading-snug text-ivory sm:text-5xl">{hugMessage}</p>
-              <button
-                autoFocus
-                onClick={() => setHug(false)}
-                className="mt-8 min-h-[48px] rounded-full border border-gold-light px-6 text-gold-light"
-              >
-                Close
-              </button>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <Modal open={hug} onClose={() => setHug(false)} label="A virtual hug">
+        <div aria-hidden className="animate-heartbeat text-6xl">
+          🤗
+        </div>
+        <p className="mt-3 font-script text-5xl text-rose-deep">Hug sent, with all my love</p>
+        <p className="mt-4 font-display text-xl leading-relaxed text-burgundy">{hugMessage}</p>
+      </Modal>
     </section>
   );
 }

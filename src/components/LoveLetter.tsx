@@ -8,9 +8,9 @@ export default function LoveLetter({ paragraphs }: { paragraphs: string[] }) {
   return (
     <motion.article
       {...card}
-      className="paper relative mx-auto w-full max-w-2xl rounded-xl border border-gold-light/70 px-6 py-10 shadow-2xl shadow-rose/30 sm:px-12 sm:py-14"
+      className="paper relative mx-auto w-full max-w-2xl rounded-xl border border-rose-soft px-6 py-10 shadow-2xl shadow-rose/30 sm:px-12 sm:py-14"
     >
-      <div aria-hidden className="absolute inset-2 rounded-lg border border-gold-light/50" />
+      <div aria-hidden className="absolute inset-2 rounded-lg border border-rose-soft/60" />
       <div className="relative space-y-5 text-center">
         {paragraphs.map((p, i) => (
           <motion.p

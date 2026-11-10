@@ -12,8 +12,8 @@ export default function RomanticButton({ children, onClick, variant = 'rose', di
   const reduce = useReducedMotion();
   const styles =
     variant === 'rose'
-      ? 'bg-gradient-to-r from-rose-deep to-burgundy text-ivory shadow-lg shadow-rose/40'
-      : 'bg-ivory text-burgundy shadow-lg shadow-black/20';
+      ? 'bg-gradient-to-r from-rose-deep to-burgundy text-white shadow-lg shadow-rose/40'
+      : 'bg-white text-burgundy shadow-lg shadow-black/20';
   return (
     <motion.button
       type="button"

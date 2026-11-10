@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import Envelope from '../components/Envelope';
 import FloatingHearts from '../components/FloatingHearts';
@@ -16,26 +16,30 @@ export default function Opening({ onOpenClick, onOpened }: Props) {
   const reduce = useReducedMotion();
   const [open, setOpen] = useState(false);
 
+  const timer = useRef(0);
+  useEffect(() => () => window.clearTimeout(timer.current), []);
+
   const handle = () => {
     if (open) return;
     setOpen(true);
     onOpenClick();
-    window.setTimeout(onOpened, reduce ? 300 : 2400);
+    timer.current = window.setTimeout(onOpened, reduce ? 300 : 2400);
   };
 
   return (
-    <section className="bg-romance relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-4 py-12 text-center">
+    <section id="letter" className="bg-romance relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-4 py-12 text-center">
       <FloatingHearts count={16} />
       <Sparkles />
       <div className="relative z-10 flex flex-col items-center">
-        <motion.h1
+        <motion.h2
           initial={reduce ? false : { opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 1.2 }}
           className="font-script text-5xl text-rose-deep sm:text-7xl"
         >
           Hey, My Love ❤️
-        </motion.h1>
+        </motion.h2>
         <motion.p
           initial={reduce ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
